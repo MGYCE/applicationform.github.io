@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .form-container, .result-container { max-width: 400px; margin: auto; }
+    .hidden { display: none; }
+    label, input { display: block; width: 100%; margin-bottom: 10px; }
+    input[type="submit"] { width: auto; }
+    .application-id { font-weight: bold; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Application Form</h2>
+    <form id="applicationForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div class="result-container hidden" id="resultContainer">
+    <h3>Application Submitted</h3>
+    <p><strong>Name:</strong> <span id="resName"></span></p>
+    <p><strong>Email:</strong> <span id="resEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="resPhone"></span></p>
+    <p class="application-id">Application ID: <span id="appId"></span></p>
+  </div>
+
+  <script>
+    document.getElementById("applicationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+
+      // Generate a unique Application ID
+      const now = new Date();
+      const dateStr = now.toISOString().split('T')[0].replace(/-/g, '');
+      const randPart = Math.floor(1000 + Math.random() * 9000);
+      const appId = `APP-${dateStr}-${randPart}`;
+
+      // Show result
+      document.getElementById("resName").textContent = name;
+      document.getElementById("resEmail").textContent = email;
+      document.getElementById("resPhone").textContent = phone;
+      document.getElementById("appId").textContent = appId;
+
+      // Toggle visibility
+      document.getElementById("applicationForm").classList.add("hidden");
+      document.getElementById("resultContainer").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>
