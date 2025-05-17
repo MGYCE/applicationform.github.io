@@ -14,7 +14,10 @@
 </head>
 <body>
   <div class="form-container">
-    <h2>Application Form</h2>
+    <h2>
+      <FONT COLOR="BLUE">Digital Computer Academy</FONT><br/>
+      Online Exam Form
+    </h2>
     <form id="applicationForm">
       <label for="name">Full Name:</label>
       <input type="text" id="name" required>
@@ -25,6 +28,12 @@
       <label for="phone">Phone Number:</label>
       <input type="tel" id="phone" required>
 
+      <label for="Course">Course Name:</label>
+      <input type="text" id="course" required>
+      
+      <label for="exam">Exam Name:</label>
+      <input type="text" id="exam" required>
+
       <input type="submit" value="Submit">
     </form>
   </div>
@@ -34,6 +43,8 @@
     <p><strong>Name:</strong> <span id="resName"></span></p>
     <p><strong>Email:</strong> <span id="resEmail"></span></p>
     <p><strong>Phone:</strong> <span id="resPhone"></span></p>
+    p><strong>Course:</strong> <span id="resCourse"></span></p>
+    p><strong>Exam:</strong> <span id="resExam"></span></p>
     <p class="application-id">Application ID: <span id="appId"></span></p>
   </div>
 
@@ -44,6 +55,8 @@
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
+      const course = document.getElementById("course").value;
+      const exam = document.getElementById("exam").value;
 
       // Generate a unique Application ID
       const now = new Date();
@@ -55,6 +68,8 @@
       document.getElementById("resName").textContent = name;
       document.getElementById("resEmail").textContent = email;
       document.getElementById("resPhone").textContent = phone;
+      document.getElementById("resCourse").textContent = course;
+      document.getElementById("resExam").textContent = exam;
       document.getElementById("appId").textContent = appId;
 
       // Toggle visibility
